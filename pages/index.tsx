@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Navbar from '../components/Navbar/Navbar';
 
 const HomePage = () => {
   return (
@@ -9,7 +10,9 @@ const HomePage = () => {
         <meta name='author' content='Christopher Vestman' />
         <meta name='contact' content='contact@christophervestman.dev' />
       </Head>
-      <h1>Quiz</h1>
+
+      {/* Navbar */}
+      <Navbar />
     </div>
   );
 };
