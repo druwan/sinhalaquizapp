@@ -1,9 +1,11 @@
+import { Box, useColorModeValue } from '@chakra-ui/react';
 import Head from 'next/head';
 import Navbar from '../components/Navbar/Navbar';
+import QuizCard from '../components/QuizCard/QuizCard';
 
 const HomePage = () => {
   return (
-    <div>
+    <Box bg={useColorModeValue('Flax.50', 'Raisin.900')} minH={'100vh'}>
       <Head>
         <title>Sinhala Quiz</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
@@ -13,7 +15,8 @@ const HomePage = () => {
 
       {/* Navbar */}
       <Navbar />
-    </div>
+      <QuizCard />
+    </Box>
   );
 };
 
