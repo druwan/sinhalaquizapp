@@ -4,17 +4,12 @@ import {
   ButtonGroup,
   Container,
   Heading,
-  HStack,
-  Radio,
-  RadioGroup,
   SimpleGrid,
-  Stack,
   useColorMode,
-  VStack,
-  Wrap,
 } from '@chakra-ui/react';
 import React, { useState } from 'react';
 import TrackProgress from '../Progress/TrackProgress';
+import CategoryMenu from '../CategoryMenu/CategoryMenu';
 
 const QuizCard = () => {
   const [value, setValue] = useState('');
@@ -23,6 +18,10 @@ const QuizCard = () => {
   const invertedColorScheme = colorMode === 'light' ? 'Mint' : 'Flax';
   return (
     <>
+      <Container>
+        <CategoryMenu />
+      </Container>
+
       <Container as={'main'} maxW={'container.sm'} pt={'15vh'}>
         <Heading
           as={'h3'}
