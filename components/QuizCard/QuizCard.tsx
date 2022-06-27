@@ -23,16 +23,16 @@ const QuizCard = () => {
   const invertedColorScheme = colorMode === 'light' ? 'Mint' : 'Flax';
   return (
     <>
-      <Container maxW={'container.sm'}>
-        <TrackProgress />
+      <Container as={'main'} maxW={'container.sm'} pt={'15vh'}>
         <Heading
           as={'h3'}
           size={'lg'}
           display={'flex'}
           alignContent={'center'}
           justifyContent={'center'}
+          pb={5}
         >
-          Question bla bla bla
+          Question
         </Heading>
 
         <ButtonGroup
@@ -50,19 +50,19 @@ const QuizCard = () => {
             <Button>Alternative 4</Button>
           </SimpleGrid>
         </ButtonGroup>
+        <ButtonGroup
+          pt={5}
+          spacing={5}
+          display={'flex'}
+          alignContent={'center'}
+          justifyContent={'center'}
+          variant={'ghost'}
+          colorScheme={colorScheme}
+        >
+          <Button leftIcon={<ArrowLeftIcon />}>Previous Question</Button>
+          <Button rightIcon={<ArrowRightIcon />}>Next Question</Button>
+        </ButtonGroup>
       </Container>
-      <ButtonGroup
-        pt={5}
-        spacing={5}
-        display={'flex'}
-        alignContent={'center'}
-        justifyContent={'center'}
-        variant={'ghost'}
-        colorScheme={colorScheme}
-      >
-        <Button leftIcon={<ArrowLeftIcon />}>Previous Question</Button>
-        <Button rightIcon={<ArrowRightIcon />}>Next Question</Button>
-      </ButtonGroup>
     </>
   );
 };
