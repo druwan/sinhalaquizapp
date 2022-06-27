@@ -4,7 +4,7 @@ import ToggleTheme from '../ToggleTheme/ToggleTheme';
 
 const Navbar = () => {
   return (
-    <Container maxW={'full'} centerContent p={3}>
+    <Container as={'nav'} maxW={'full'} centerContent p={3}>
       <HStack spacing={'20'}>
         <Heading>Sinhala Quiz</Heading>
         <Center w={'24'}>
