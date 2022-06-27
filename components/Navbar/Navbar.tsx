@@ -1,17 +1,18 @@
-import { Center, Container, Heading, HStack } from '@chakra-ui/react';
+import { Container, Flex, Heading } from '@chakra-ui/react';
 import React from 'react';
 import ToggleTheme from '../ToggleTheme/ToggleTheme';
 
 const Navbar = () => {
   return (
-    <Container as={'nav'} maxW={'full'} centerContent p={3}>
-      <HStack spacing={'20'}>
-        <Heading>Sinhala Quiz</Heading>
-        <Center w={'24'}>
-          <ToggleTheme />
-        </Center>
-      </HStack>
-    </Container>
+    <Flex as={'nav'} p={3}>
+      <Container maxW={'full'}>
+        <Heading as={'h2'}>Sinhala Quiz</Heading>
+      </Container>
+
+      <Container maxW={'full'} centerContent alignItems={'end'}>
+        <ToggleTheme />
+      </Container>
+    </Flex>
   );
 };
 

@@ -21,7 +21,7 @@ const ToggleTheme = () => {
           icon={useColorModeValue(<MoonIcon />, <SunIcon />)}
           onClick={toggleColorMode}
           size={'md'}
-          pt={'2'}
+          pt={'4'}
           variant={'link'}
         />
       </motion.div>
