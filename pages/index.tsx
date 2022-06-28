@@ -1,11 +1,13 @@
-import { Box, useColorModeValue } from '@chakra-ui/react';
+import { Box, Container, Flex } from '@chakra-ui/react';
 import Head from 'next/head';
+import PrevNextCardBtn from '../components/Buttons/PrevNextCardBtn';
+import CategoryMenu from '../components/CategoryMenu/CategoryMenu';
 import Navbar from '../components/Navbar/Navbar';
 import QuizCard from '../components/QuizCard/QuizCard';
 
 const HomePage = () => {
   return (
-    <Box bg={useColorModeValue('Flax.50', 'Raisin.900')} minH={'100vh'}>
+    <Box>
       <Head>
         <title>Sinhala Quiz</title>
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
@@ -15,7 +17,23 @@ const HomePage = () => {
 
       {/* Navbar */}
       <Navbar />
-      <QuizCard />
+      <Flex
+        flexDir={'column'}
+        alignItems={'center'}
+        minH={'75vh'}
+        justifyContent={'center'}
+      >
+        <Container>
+          {/* Move this into a 'start' page ? */}
+          <CategoryMenu />
+        </Container>
+
+        <QuizCard />
+
+        <Container as={'main'} maxW={'container.sm'}>
+          <PrevNextCardBtn />
+        </Container>
+      </Flex>
     </Box>
   );
 };
