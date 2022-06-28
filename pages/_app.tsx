@@ -2,6 +2,14 @@ import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import '@fontsource/yaldevi';
 
 const theme = extendTheme({
+  semanticTokens: {
+    colors: {
+      'chakra-body-bg': {
+        _light: 'Flax.50',
+        _dark: 'Raisin.900',
+      },
+    },
+  },
   fonts: {
     heading: 'Yaldevi, sans-serif',
     body: 'Yaldevi, sans-serif',
