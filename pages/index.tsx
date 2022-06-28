@@ -1,7 +1,6 @@
 import { Box, Container, Flex } from '@chakra-ui/react';
 import Head from 'next/head';
 import PrevNextCardBtn from '../components/Buttons/PrevNextCardBtn';
-import CategoryMenu from '../components/CategoryMenu/CategoryMenu';
 import Navbar from '../components/Navbar/Navbar';
 import QuizCard from '../components/QuizCard/QuizCard';
 
@@ -23,11 +22,6 @@ const HomePage = () => {
         minH={'75vh'}
         justifyContent={'center'}
       >
-        <Container>
-          {/* Move this into a 'start' page ? */}
-          <CategoryMenu />
-        </Container>
-
         <QuizCard />
 
         <Container as={'main'} maxW={'container.sm'}>
