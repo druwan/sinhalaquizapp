@@ -1,66 +1,46 @@
-import { ArrowLeftIcon, ArrowRightIcon } from '@chakra-ui/icons';
 import {
-  Button,
-  ButtonGroup,
+  Box,
+  Center,
   Container,
-  Heading,
-  SimpleGrid,
-  useColorMode,
+  Stack,
+  Text,
+  useColorModeValue,
 } from '@chakra-ui/react';
-import React, { useState } from 'react';
-import TrackProgress from '../Progress/TrackProgress';
+import React from 'react';
+import PrevNextCardBtn from '../Buttons/PrevNextCardBtn';
 import CategoryMenu from '../CategoryMenu/CategoryMenu';
 
 const QuizCard = () => {
-  const [value, setValue] = useState('');
-  const { colorMode } = useColorMode();
-  const colorScheme = colorMode === 'light' ? 'Raisin' : 'Turquoise';
-  const invertedColorScheme = colorMode === 'light' ? 'Mint' : 'Flax';
   return (
     <>
       <Container>
+        {/* Move this into a 'start' page */}
         <CategoryMenu />
       </Container>
 
-      <Container as={'main'} maxW={'container.sm'} pt={'15vh'}>
-        <Heading
-          as={'h3'}
-          size={'lg'}
-          display={'flex'}
-          alignContent={'center'}
-          justifyContent={'center'}
-          pb={5}
+      <Center py={6}>
+        <Box
+          maxW={'445px'}
+          w={'full'}
+          bg={useColorModeValue('Mint.300', 'Flax.200')}
+          boxShadow={'2xl'}
+          rounded={'md'}
+          p={6}
+          overflow={'hidden'}
         >
-          Question
-        </Heading>
+          <Stack>
+            <Text color='Raisin.900'>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi ipsa
+              maxime quod in aliquam aperiam rerum, tempora neque iste id odio,
+              vitae hic! Accusantium nam quo deleniti excepturi doloremque
+              earum.
+            </Text>
+          </Stack>
+        </Box>
+      </Center>
 
-        <ButtonGroup
-          colorScheme={invertedColorScheme}
-          size={'lg'}
-          display={'flex'}
-          alignContent={'center'}
-          justifyContent={'center'}
-        >
-          <SimpleGrid spacing={5} columns={2}>
-            {/* Get alternatives for each question. */}
-            <Button>Alternative 1</Button>
-            <Button>Alternative 2</Button>
-            <Button>Alternative 3</Button>
-            <Button>Alternative 4</Button>
-          </SimpleGrid>
-        </ButtonGroup>
-        <ButtonGroup
-          pt={5}
-          spacing={5}
-          display={'flex'}
-          alignContent={'center'}
-          justifyContent={'center'}
-          variant={'ghost'}
-          colorScheme={colorScheme}
-        >
-          <Button leftIcon={<ArrowLeftIcon />}>Previous Question</Button>
-          <Button rightIcon={<ArrowRightIcon />}>Next Question</Button>
-        </ButtonGroup>
+      <Container as={'main'} maxW={'container.sm'}>
+        <PrevNextCardBtn />
       </Container>
     </>
   );
