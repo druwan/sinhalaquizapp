@@ -17,6 +17,7 @@ const HomePage = () => {
       {/* Navbar */}
       <Navbar />
       <Flex
+        as={'main'}
         flexDir={'column'}
         alignItems={'center'}
         minH={'75vh'}
@@ -24,7 +25,7 @@ const HomePage = () => {
       >
         <QuizCard />
 
-        <Container as={'main'} maxW={'container.sm'}>
+        <Container maxW={'container.sm'}>
           <PrevNextCardBtn />
         </Container>
       </Flex>
