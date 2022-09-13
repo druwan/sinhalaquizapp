@@ -11,7 +11,7 @@ const PrevNextCardBtn = () => {
       spacing={5}
       display={'flex'}
       alignContent={'center'}
-      justifyContent={'center'}
+      justifyContent={'space-around'}
       variant={'ghost'}
       colorScheme={colorScheme}
     >
