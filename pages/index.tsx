@@ -3,8 +3,15 @@ import Head from 'next/head';
 import PrevNextCardBtn from '../components/Buttons/PrevNextCardBtn';
 import Navbar from '../components/Navbar/Navbar';
 import QuizCard from '../components/QuizCard/QuizCard';
+import { loadNumbers } from '../lib/loadQuestions';
 
-const HomePage = () => {
+export async function getStaticProps() {
+  const numbers = await loadNumbers();
+  return { props: { numbers } };
+}
+
+const HomePage = ({ numbers }) => {
+  console.log(numbers);
   return (
     <Box>
       <Head>
@@ -25,7 +32,7 @@ const HomePage = () => {
       >
         <QuizCard />
 
-        <Container maxW={'container.sm'}>
+        <Container maxW={'container.md'}>
           <PrevNextCardBtn />
         </Container>
       </Flex>
