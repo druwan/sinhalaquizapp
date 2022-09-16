@@ -1,5 +1,6 @@
 import { Box, Container, Flex } from '@chakra-ui/react';
 import Head from 'next/head';
+import Link from 'next/link';
 import PrevNextCardBtn from '../components/Buttons/PrevNextCardBtn';
 import Navbar from '../components/Navbar/Navbar';
 import QuizCard from '../components/QuizCard/QuizCard';
@@ -29,13 +30,7 @@ const HomePage = ({ numbers }) => {
         alignItems={'center'}
         minH={'75vh'}
         justifyContent={'center'}
-      >
-        <QuizCard />
-
-        <Container maxW={'container.md'}>
-          <PrevNextCardBtn />
-        </Container>
-      </Flex>
+      ></Flex>
     </Box>
   );
 };
