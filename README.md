@@ -1,7 +1,5 @@
 # Sinhala Quiz App
-Web Application that test you on basic sinhala. A simple way of learning a new vocabulary is the use of **flashcards**. The plan for this application is to be able to *choose a category* and see different flashcards that are *clickable*. The front of the card will be the word in sinhala and the back of the card will be the english translation.
-
-<b>I switched the objective from being a Quiz app to a flashcard app due to the extra work to determine the 'false' alternatives for the quizzes.</b>
+Web Application that test you on some very very basic sinhala. A simple way of learning a new vocabulary is the use of a **quiz**. The plan for this application is to be able to *choose a category* and see different questions with answers that are *clickable*.
 
 ## Objective
 The goal is to create an educational app, and simultaneously learn sinhala and deepen my developer skills.
