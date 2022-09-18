@@ -17,7 +17,7 @@ const Navbar = () => {
   const Links = ['Family', 'Numbers', 'Pronouns', 'Time'];
 
   const NavLink = ({ children, href }) => (
-    <NextLink href={href} passHref>
+    <NextLink href={'/' + href} passHref>
       <Link>{children}</Link>
     </NextLink>
   );
