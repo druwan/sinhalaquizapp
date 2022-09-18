@@ -3,7 +3,6 @@ import {
   Center,
   Container,
   Flex,
-  Spacer,
   Text,
   useColorModeValue,
 } from '@chakra-ui/react';
@@ -28,7 +27,7 @@ const QuizCard = () => {
           <Text fontSize={'2xl'} textAlign={'center'}>
             Get a Translation here in English
           </Text>
-          Google translate btn for tips?
+          Google translate btn for pronounciation?
         </Box>
       </Center>
       <Container maxW={'md'} gap={3}>
