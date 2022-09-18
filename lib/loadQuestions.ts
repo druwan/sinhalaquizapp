@@ -11,11 +11,11 @@ export async function loadFamily() {
 
 export async function loadNumbers() {
   const res = await fetch('http://localhost:3000/api/numbers');
-  const questions = await res.json();
+  const numbers = await res.json();
 
   return {
     props: {
-      questions,
+      numbers,
     },
   };
 }
