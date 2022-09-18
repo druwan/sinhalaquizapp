@@ -1,5 +1,4 @@
 import {
-  Box,
   Container,
   Flex,
   Heading,
@@ -17,8 +16,8 @@ const Navbar = () => {
 
   const Links = ['Family', 'Numbers', 'Pronouns', 'Time'];
 
-  const NavLink = ({ children }) => (
-    <NextLink href='#' passHref>
+  const NavLink = ({ children, href }) => (
+    <NextLink href={href} passHref>
       <Link>{children}</Link>
     </NextLink>
   );
@@ -33,7 +32,9 @@ const Navbar = () => {
       <Flex maxW={'full'} py={3}>
         <Text fontSize={'md'}>
           {Links.map((link) => (
-            <NavLink key={link}>{link}</NavLink>
+            <NavLink key={link} href={link}>
+              {link}
+            </NavLink>
           ))}
         </Text>
       </Flex>
