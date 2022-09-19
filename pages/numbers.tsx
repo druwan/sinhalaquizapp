@@ -3,15 +3,6 @@ import Navbar from '../components/Navbar/Navbar';
 import QuizCard from '../components/QuizCard/QuizCard';
 import { loadNumbers } from '../lib/loadQuestions';
 
-/* interface QuizItemObjType {
-  id: Number;
-  english: String;
-  sinhala: {
-    alphabetical: String;
-    script: String;
-  };
-} */
-
 const Numbers = () => {
   // Get all the Numbers
   const [numbers, setNumbers] = useState(null);
@@ -30,8 +21,7 @@ const Numbers = () => {
   return (
     <>
       <Navbar />
-      {/* <QuizCard /> */}
-      {numbers && console.log(numbers.props.numbers)}
+      {numbers && <QuizCard props={numbers.props.numbers.numbers} />}
     </>
   );
 };
