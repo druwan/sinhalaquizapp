@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   ButtonGroup,
   Flex,
@@ -9,6 +8,14 @@ import {
 import React from 'react';
 
 const QuizAlternativesCard = ({ correct, alternatives }) => {
+  const checkAnswer = (e) => {
+    e.preventDefault();
+    if (e.target.innerText === correct[0].sinhala.alphabetical) {
+      console.log('Correct! Save score somehow...');
+    } else {
+      console.log('Incorrect, move on to next question');
+    }
+  };
   return (
     <Flex justifyContent={'space-around'} gap={3}>
       <ButtonGroup>
@@ -18,11 +25,9 @@ const QuizAlternativesCard = ({ correct, alternatives }) => {
             size={'lg'}
             bg={useColorModeValue('Mint.300', 'Flax.200')}
             color={'Raisin.900'}
+            onClick={(e) => checkAnswer(e)}
           >
-            <Text fontSize={'xl'}>
-              {alt.sinhala.script}{' '}
-              <Text fontSize={'sm'}>{alt.sinhala.alphabetical}</Text>
-            </Text>
+            <Text fontSize={'xl'}>{alt.sinhala.alphabetical}</Text>
           </Button>
         ))}
       </ButtonGroup>
