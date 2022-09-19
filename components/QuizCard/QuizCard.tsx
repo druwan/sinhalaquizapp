@@ -1,11 +1,4 @@
-import {
-  Box,
-  Center,
-  Container,
-  Flex,
-  Text,
-  useColorModeValue,
-} from '@chakra-ui/react';
+import { Box, Flex, Text, useColorModeValue } from '@chakra-ui/react';
 import React from 'react';
 import { getRandom } from '../../lib/shuffleArray';
 import QuizAlternativesCard from './QuizAlternativesCard';
@@ -32,7 +25,8 @@ const QuizCard = ({ props }) => {
           color='Raisin.900'
         >
           <Text fontSize={'2xl'} textAlign={'center'}>
-            What is Sinhala for: {toBeTranslated[0].english}
+            What is Sinhala for: {toBeTranslated[0].english} -{' '}
+            {toBeTranslated[0].sinhala.script}
           </Text>
           Google translate btn for pronounciation?
         </Box>
