@@ -4,6 +4,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 const family = [
   {
+    id: 0,
     english: 'Grandmother',
     sinhala: {
       alphabetical: 'Aachchi',
@@ -11,6 +12,7 @@ const family = [
     },
   },
   {
+    id: 1,
     english: 'Grandfather',
     sinhala: {
       alphabetical: 'Sīyā',
@@ -18,6 +20,7 @@ const family = [
     },
   },
   {
+    id: 2,
     english: 'Mother',
     sinhala: {
       alphabetical: 'Amma',
@@ -25,6 +28,7 @@ const family = [
     },
   },
   {
+    id: 3,
     english: 'Father',
     sinhala: {
       alphabetical: 'Thaaththa',
@@ -32,6 +36,7 @@ const family = [
     },
   },
   {
+    id: 4,
     english: "Mothers's older brother",
     sinhala: {
       alphabetical: 'Loku Māmā',
@@ -39,6 +44,7 @@ const family = [
     },
   },
   {
+    id: 5,
     english: "Mother's younger brother",
     sinhala: {
       alphabetical: 'Punchi Māmā',
@@ -46,6 +52,7 @@ const family = [
     },
   },
   {
+    id: 6,
     english: "Mother's older sister",
     sinhala: {
       alphabetical: 'Loku Amma',
@@ -53,6 +60,7 @@ const family = [
     },
   },
   {
+    id: 7,
     english: "Mother's younger sister",
     sinhala: {
       alphabetical: 'Punchi Amma',
@@ -60,6 +68,7 @@ const family = [
     },
   },
   {
+    id: 8,
     english: "Father's older brother",
     sinhala: {
       alphabetical: 'Loku Thaaththa',
@@ -67,6 +76,7 @@ const family = [
     },
   },
   {
+    id: 9,
     english: "Father's younger brother",
     sinhala: {
       alphabetical: 'Baappa',
@@ -74,6 +84,7 @@ const family = [
     },
   },
   {
+    id: 10,
     english: "Father's older sister",
     sinhala: {
       alphabetical: 'Loku Nændā',
@@ -81,6 +92,7 @@ const family = [
     },
   },
   {
+    id: 11,
     english: "Father's younger sister",
     sinhala: {
       alphabetical: 'Punchi Nændā',
@@ -88,6 +100,7 @@ const family = [
     },
   },
   {
+    id: 12,
     english: 'Older brother',
     sinhala: {
       alphabetical: 'Ayiyā',
@@ -95,6 +108,7 @@ const family = [
     },
   },
   {
+    id: 13,
     english: 'Younger brother',
     sinhala: {
       alphabetical: 'Malli',
@@ -102,6 +116,7 @@ const family = [
     },
   },
   {
+    id: 14,
     english: 'Older sister',
     sinhala: {
       alphabetical: 'Akkā',
@@ -109,6 +124,7 @@ const family = [
     },
   },
   {
+    id: 15,
     english: 'Younger sister',
     sinhala: {
       alphabetical: 'Nangi',
@@ -116,6 +132,7 @@ const family = [
     },
   },
   {
+    id: 16,
     english: 'Children',
     sinhala: {
       alphabetical: 'Lamayi',
@@ -123,6 +140,7 @@ const family = [
     },
   },
   {
+    id: 17,
     english: 'Son',
     sinhala: {
       alphabetical: 'Puthaa',
@@ -130,6 +148,7 @@ const family = [
     },
   },
   {
+    id: 18,
     english: 'Daughter',
     sinhala: {
       alphabetical: 'Dhuwa',
