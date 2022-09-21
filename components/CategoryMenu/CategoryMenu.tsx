@@ -12,7 +12,12 @@ import {
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
-import { loadFamily, loadNumbers } from '../../lib/loadQuestions';
+import {
+  loadFamily,
+  loadNumbers,
+  loadPronouns,
+  loadTime,
+} from '../../lib/loadQuestions';
 import QuizCard from '../QuizCard/QuizCard';
 
 const fetcher = (...args: Parameters<typeof fetch>) =>
@@ -28,8 +33,10 @@ const CategoryMenu = () => {
   const colorScheme = colorMode === 'light' ? 'Mint' : 'Flax';
 
   const [selectTopic, setTopic] = useState('Select Category');
-  const [numbers, setNumbers] = useState(null);
   const [family, setFamily] = useState(null);
+  const [numbers, setNumbers] = useState(null);
+  const [pronouns, setPronouns] = useState(null);
+  const [time, setTime] = useState(null);
 
   const { data, error } = useSWR('/api/category', fetcher);
 
@@ -37,8 +44,10 @@ const CategoryMenu = () => {
   useEffect(() => {
     async function getNumbers() {
       try {
-        await loadNumbers().then((resNumbers) => setNumbers(resNumbers));
         await loadFamily().then((resFamily) => setFamily(resFamily));
+        await loadNumbers().then((resNumbers) => setNumbers(resNumbers));
+        await loadPronouns().then((resPronouns) => setPronouns(resPronouns));
+        await loadTime().then((resTime) => setTime(resTime));
       } catch (err) {
         console.log(err.message);
       }
@@ -85,12 +94,16 @@ const CategoryMenu = () => {
         </HStack>
       </Center>
 
-      {selectTopic === 'Numbers' && (
-        <QuizCard props={numbers.props.numbers.numbers} />
-      )}
       {selectTopic === 'Family' && (
         <QuizCard props={family.props.family.family} />
       )}
+      {selectTopic === 'Numbers' && (
+        <QuizCard props={numbers.props.numbers.numbers} />
+      )}
+      {selectTopic === 'Pronouns' && (
+        <QuizCard props={pronouns.props.pronouns.pronouns} />
+      )}
+      {selectTopic === 'Time' && <QuizCard props={time.props.time.time} />}
     </>
   );
 };
