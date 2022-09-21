@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react';
 import useSWR from 'swr';
-import { loadNumbers } from '../../lib/loadQuestions';
+import { loadFamily, loadNumbers } from '../../lib/loadQuestions';
 import QuizCard from '../QuizCard/QuizCard';
 
 const fetcher = (...args: Parameters<typeof fetch>) =>
@@ -29,22 +29,25 @@ const CategoryMenu = () => {
 
   const [selectTopic, setTopic] = useState('Select Category');
   const [numbers, setNumbers] = useState(null);
+  const [family, setFamily] = useState(null);
 
   const { data, error } = useSWR('/api/category', fetcher);
 
-  if (error) return <p>Failed to load</p>;
-  if (!data) return <p>Loading...</p>;
-
+  // According to the React docs, it is OK to use multiple effects https://reactjs.org/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns
   useEffect(() => {
-    async function getQuizQuestions() {
+    async function getNumbers() {
       try {
-        await loadNumbers().then((result) => setNumbers(result));
+        await loadNumbers().then((resNumbers) => setNumbers(resNumbers));
+        await loadFamily().then((resFamily) => setFamily(resFamily));
       } catch (err) {
         console.log(err.message);
       }
     }
-    getQuizQuestions();
-  }, []);
+    getNumbers();
+  }, [selectTopic]);
+
+  if (error) return <p>Failed to load</p>;
+  if (!data) return <p>Loading...</p>;
 
   return (
     <>
@@ -84,6 +87,9 @@ const CategoryMenu = () => {
 
       {selectTopic === 'Numbers' && (
         <QuizCard props={numbers.props.numbers.numbers} />
+      )}
+      {selectTopic === 'Family' && (
+        <QuizCard props={family.props.family.family} />
       )}
     </>
   );
