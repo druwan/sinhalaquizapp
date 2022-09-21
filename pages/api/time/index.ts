@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 
-const weekdays = [
+const time = [
   {
     id: 1,
     english: 'Monday',
@@ -8,6 +8,7 @@ const weekdays = [
       alphabetical: 'Sandhudhaa',
       script: 'සඳුදා',
     },
+    type: 'weekday',
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const weekdays = [
       alphabetical: 'Angaharuwaadhaa',
       script: 'අඟහරුවාදා',
     },
+    type: 'weekday',
   },
   {
     id: 3,
@@ -24,6 +26,7 @@ const weekdays = [
       alphabetical: 'Badhaadhaa',
       script: 'බදාදා',
     },
+    type: 'weekday',
   },
   {
     id: 4,
@@ -32,6 +35,7 @@ const weekdays = [
       alphabetical: 'Brahaspathindhaa',
       script: 'බ්‍රහස්පතින්දා',
     },
+    type: 'weekday',
   },
   {
     id: 5,
@@ -40,6 +44,7 @@ const weekdays = [
       alphabetical: 'Sikuraadhaa',
       script: 'සිකුරාදා',
     },
+    type: 'weekday',
   },
   {
     id: 6,
@@ -48,6 +53,7 @@ const weekdays = [
       alphabetical: 'Senasuraadhaa',
       script: 'සෙනසුරාදා',
     },
+    type: 'weekday',
   },
   {
     id: 7,
@@ -56,10 +62,9 @@ const weekdays = [
       alphabetical: 'Iridha',
       script: 'ඉරිදා',
     },
+    type: 'weekday',
   },
-];
 
-const months = [
   {
     id: 1,
     english: 'January',
@@ -67,6 +72,7 @@ const months = [
       alphabetical: 'Janawaari',
       script: 'ජනවාරි',
     },
+    type: 'month',
   },
   {
     id: 2,
@@ -75,6 +81,7 @@ const months = [
       alphabetical: 'Pebarawaari',
       script: 'පෙබරවාරි',
     },
+    type: 'month',
   },
   {
     id: 3,
@@ -83,6 +90,7 @@ const months = [
       alphabetical: 'Marthu',
       script: 'මාර්තු',
     },
+    type: 'month',
   },
   {
     id: 4,
@@ -91,6 +99,7 @@ const months = [
       alphabetical: 'April',
       script: 'අප්රිල්',
     },
+    type: 'month',
   },
   {
     id: 5,
@@ -99,6 +108,7 @@ const months = [
       alphabetical: 'Mæyi',
       script: 'මැයි',
     },
+    type: 'month',
   },
   {
     id: 6,
@@ -107,6 +117,7 @@ const months = [
       alphabetical: 'Juni',
       script: 'ජූනි',
     },
+    type: 'month',
   },
   {
     id: 7,
@@ -115,6 +126,7 @@ const months = [
       alphabetical: 'Juli',
       script: 'ජුලි',
     },
+    type: 'month',
   },
   {
     id: 8,
@@ -123,6 +135,7 @@ const months = [
       alphabetical: 'Agosthu',
       script: 'අගෝස්තු',
     },
+    type: 'month',
   },
   {
     id: 9,
@@ -131,6 +144,7 @@ const months = [
       alphabetical: 'Sæpthæmbar',
       script: 'සැප්තැම්බර්',
     },
+    type: 'month',
   },
   {
     id: 10,
@@ -139,6 +153,7 @@ const months = [
       alphabetical: 'Okthombar',
       script: 'ඔක්තෝම්බර්',
     },
+    type: 'month',
   },
   {
     id: 11,
@@ -147,6 +162,7 @@ const months = [
       alphabetical: 'Novæmbar',
       script: 'නොවැම්බර්',
     },
+    type: 'month',
   },
   {
     id: 12,
@@ -155,12 +171,12 @@ const months = [
       alphabetical: 'Desæmbar',
       script: 'දෙසැම්බර්',
     },
+    type: 'month',
   },
 ];
 
 export default function Handler(req: NextApiRequest, res: NextApiResponse) {
   res.status(200).json({
-    weekdays: weekdays,
-    months: months,
+    time: time,
   });
 }
