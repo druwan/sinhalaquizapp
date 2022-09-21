@@ -1,9 +1,9 @@
-import { Box, Container, Flex } from '@chakra-ui/react';
+import { Box, Flex } from '@chakra-ui/react';
 import Head from 'next/head';
-import Link from 'next/link';
-import PrevNextCardBtn from '../components/Buttons/PrevNextCardBtn';
+
+import CategoryMenu from '../components/CategoryMenu/CategoryMenu';
 import Navbar from '../components/Navbar/Navbar';
-import QuizCard from '../components/QuizCard/QuizCard';
+
 import { loadNumbers } from '../lib/loadQuestions';
 
 export async function getStaticProps() {
@@ -11,8 +11,7 @@ export async function getStaticProps() {
   return { props: { numbers } };
 }
 
-const HomePage = ({ numbers }) => {
-  console.log(numbers);
+const HomePage = () => {
   return (
     <Box>
       <Head>
@@ -30,7 +29,9 @@ const HomePage = ({ numbers }) => {
         alignItems={'center'}
         minH={'75vh'}
         justifyContent={'center'}
-      ></Flex>
+      >
+        <CategoryMenu />
+      </Flex>
     </Box>
   );
 };
