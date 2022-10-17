@@ -1,8 +1,6 @@
-import { type } from "os";
-
 export interface Category {
   id: number;
-  topic: string;
+  name: string;
 }
 
 export interface QuizQuestion {
