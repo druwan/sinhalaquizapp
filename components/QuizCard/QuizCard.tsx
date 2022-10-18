@@ -1,20 +1,44 @@
-import { Box, Flex, Text, useColorModeValue } from "@chakra-ui/react";
-import React from "react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Flex,
+  Text,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
+import useSWR from "swr";
+import { fetcher } from "../../utils/loadQuestions";
 import { getRandom } from "../../utils/shuffleArray";
-
-import QuizAlternativesCard from "./QuizAlternativesCard";
+import TrackProgress from "../Progress/TrackProgress";
 
 const QuizCard = ({ props }) => {
-  console.log(props);
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [currentScore, setCurrentScore] = useState(0);
 
-  // SCRAMBLE AND LIMIT THE ARRAY HERE, 4 choices
-  // const shuffledArray = getRandom(props, 4);
-  // From the new Array, we need to select 1 Object to translate, and 3 extra alternatives
-  // const toBeTranslated = getRandom(shuffledArray, 1);
+  const { data, error } = useSWR(`/api/${props}`, fetcher);
+
+  if (error) return <p>Failed to load</p>;
+  if (!data) return <p>Loading...</p>;
+
+  // Get 5 random questions, since the array will be scrambled, we can just use the first obj and then increase
+  const fiveQuestions = getRandom(data[`${props}`], 5);
+
+  const checkAnswer = (e) => {
+    e.preventDefault();
+    if (
+      e.target.innerText === fiveQuestions[currentQuestion].sinhala.alphabetical
+    ) {
+      setCurrentScore(currentScore + 1);
+    } else {
+      setCurrentScore(currentScore);
+    }
+    setCurrentQuestion(currentQuestion + 1);
+  };
 
   return (
     <>
-      {/* <Flex alignContent={"center"} justifyContent={"center"}>
+      <Flex alignContent={"center"} justifyContent={"center"}>
         <Box
           minW={"350px"}
           maxW={"550px"}
@@ -27,19 +51,44 @@ const QuizCard = ({ props }) => {
           maxH={"400px"}
           color="Raisin.900"
         >
-          <Text fontSize={"2xl"} textAlign={"center"}>
-            What is Sinhala for: {toBeTranslated[0].english} -{" "}
-            {toBeTranslated[0].sinhala.script}
-          </Text>
-          Google translate btn for pronounciation?
+          {currentQuestion < 5 ? (
+            <>
+              <Text fontSize={"2xl"} textAlign={"center"}>
+                What is Sinhala for: {fiveQuestions[currentQuestion].english}{" "}
+                {fiveQuestions[currentQuestion].sinhala.script}
+              </Text>
+              <Text>
+                Question {currentQuestion + 1} of {fiveQuestions.length}
+              </Text>
+            </>
+          ) : (
+            <>
+              <Text fontSize={"2xl"} textAlign={"center"}>
+                Game has ended. Score: {currentScore} / {fiveQuestions.length}
+              </Text>
+              <Text>Start a new game by selecting a category.</Text>
+            </>
+          )}
         </Box>
       </Flex>
       <Flex alignContent={"center"} justifyContent={"center"} gap={3} py={3}>
-        <QuizAlternativesCard
-          correct={toBeTranslated}
-          alternatives={shuffledArray}
-        />
-      </Flex> */}
+        <Flex justifyContent={"space-around"} gap={3}>
+          <ButtonGroup>
+            {fiveQuestions.map((alternative) => (
+              <Button
+                key={alternative.id}
+                size={"lg"}
+                bg={useColorModeValue("Mint.300", "Flax.200")}
+                color={"Raisin.900"}
+                onClick={(e) => checkAnswer(e)}
+              >
+                <Text fontSize={"xl"}>{alternative.sinhala.alphabetical}</Text>
+              </Button>
+            ))}
+          </ButtonGroup>
+        </Flex>
+      </Flex>
+      <TrackProgress value={(currentScore * 100) / fiveQuestions.length} />
     </>
   );
 };
