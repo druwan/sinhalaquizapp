@@ -10,10 +10,10 @@ import {
   Spacer,
   useColorMode,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import useSWR from "swr";
 import { Category } from "../../utils/Interface";
-import { fetcher, loadFamily, loadNumbers } from "../../utils/loadQuestions";
+import { fetcher } from "../../utils/loadQuestions";
 
 import QuizCard from "../QuizCard/QuizCard";
 
@@ -22,23 +22,8 @@ const CategoryMenu = () => {
   const colorScheme = colorMode === "light" ? "Mint" : "Flax";
 
   const [selectTopic, setTopic] = useState("Select Category");
-  const [family, setFamily] = useState(null);
-  const [numbers, setNumbers] = useState(null);
 
   const { data, error } = useSWR("/api/category", fetcher);
-
-  // According to the React docs, it is OK to use multiple effects https://reactjs.org/docs/hooks-effect.html#tip-use-multiple-effects-to-separate-concerns
-  useEffect(() => {
-    async function getNumbers() {
-      try {
-        await loadFamily().then((resFamily) => setFamily(resFamily));
-        await loadNumbers().then((resNumbers) => setNumbers(resNumbers));
-      } catch (err) {
-        console.log(err.message);
-      }
-    }
-    getNumbers();
-  }, [selectTopic]);
 
   if (error) return <p>Failed to load</p>;
   if (!data) return <p>Loading...</p>;
@@ -79,12 +64,9 @@ const CategoryMenu = () => {
         </HStack>
       </Center>
 
-      {selectTopic === "family" && <QuizCard props={family.props.family} />}
-      {selectTopic === "numbers" && <QuizCard props={numbers.props.numbers} />}
-      {/* {selectTopic === 'Pronouns' && (
-        <QuizCard props={pronouns.props.pronouns.pronouns} />
+      {selectTopic !== "Select Category" && (
+        <QuizCard props={selectTopic.toLowerCase()} />
       )}
-      {selectTopic === 'Time' && <QuizCard props={time.props.time.time} />} */}
     </>
   );
 };
