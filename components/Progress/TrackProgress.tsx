@@ -6,7 +6,7 @@ const TrackProgress = ({ value }) => {
 
   // Calc new value based on num of questions answered.
   return (
-    <Container maxW={"container.sm"}>
+    <Container maxW={"container.sm"} pt={"3"}>
       <Progress colorScheme={colorScheme} value={value} size={"sm"} />
     </Container>
   );
