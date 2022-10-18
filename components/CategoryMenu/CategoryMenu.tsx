@@ -8,7 +8,7 @@ import {
   MenuItem,
   MenuList,
   Spacer,
-  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import useSWR from "swr";
@@ -18,10 +18,9 @@ import { fetcher } from "../../utils/loadQuestions";
 import QuizCard from "../QuizCard/QuizCard";
 
 const CategoryMenu = () => {
-  const { colorMode } = useColorMode();
-  const colorScheme = colorMode === "light" ? "Mint" : "Flax";
-
   const [selectTopic, setTopic] = useState("Select Category");
+  const buttonTextColor = useColorModeValue("Flax.900", "Flax.900");
+  const buttonBgColor = "Flax.200";
 
   const { data, error } = useSWR("/api/category", fetcher);
 
@@ -36,16 +35,20 @@ const CategoryMenu = () => {
             <MenuButton
               as={Button}
               rightIcon={<ChevronDownIcon />}
-              colorScheme={colorScheme}
+              bg={buttonBgColor}
+              color={buttonTextColor}
+              _hover={{ bg: buttonBgColor }}
+              _active={{ bg: buttonBgColor }}
             >
               {selectTopic}
             </MenuButton>
-            <MenuList>
+            <MenuList bg={buttonBgColor} color={buttonTextColor}>
               {data.categories.map((category: Category) => (
                 <MenuItem
                   key={category.id}
                   value={category.name}
                   onClick={() => setTopic(category.name)}
+                  _hover={{ bg: "Raisin.400" }}
                 >
                   {category.name}
                 </MenuItem>
@@ -56,8 +59,11 @@ const CategoryMenu = () => {
           <Spacer />
 
           <Button
-            colorScheme={colorScheme}
+            bg={buttonBgColor}
+            color={buttonTextColor}
             onClick={() => setTopic("Select Category")}
+            _hover={{ bg: buttonBgColor }}
+            _active={{ bg: buttonBgColor }}
           >
             Clear Category
           </Button>

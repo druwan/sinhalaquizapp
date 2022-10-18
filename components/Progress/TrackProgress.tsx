@@ -1,8 +1,7 @@
-import { Container, Progress, useColorMode } from "@chakra-ui/react";
+import { Container, Progress, useColorModeValue } from "@chakra-ui/react";
 
 const TrackProgress = ({ value }) => {
-  const { colorMode } = useColorMode();
-  const colorScheme = colorMode === "light" ? "Raisin" : "Flax";
+  const colorScheme = useColorModeValue("whatsapp", "linkedin");
 
   // Calc new value based on num of questions answered.
   return (

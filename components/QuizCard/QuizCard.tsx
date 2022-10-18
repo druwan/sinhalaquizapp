@@ -1,11 +1,4 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Flex,
-  Text,
-  useColorModeValue,
-} from "@chakra-ui/react";
+import { Box, Button, ButtonGroup, Flex, Text } from "@chakra-ui/react";
 import React, { useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "../../utils/loadQuestions";
@@ -43,7 +36,7 @@ const QuizCard = ({ props }) => {
           minW={"350px"}
           maxW={"550px"}
           w={"full"}
-          bg={useColorModeValue("Mint.300", "Flax.200")}
+          bg={"Flax.200"}
           boxShadow={"2xl"}
           rounded={"md"}
           p={6}
@@ -78,7 +71,7 @@ const QuizCard = ({ props }) => {
               <Button
                 key={alternative.id}
                 size={"lg"}
-                bg={useColorModeValue("Mint.300", "Flax.200")}
+                bg={"Flax.200"}
                 color={"Raisin.900"}
                 onClick={(e) => checkAnswer(e)}
               >
