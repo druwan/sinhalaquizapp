@@ -1,4 +1,4 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
+import { ChevronDownIcon } from '@chakra-ui/icons';
 import {
   Button,
   Center,
@@ -9,20 +9,20 @@ import {
   MenuList,
   Spacer,
   useColorModeValue,
-} from "@chakra-ui/react";
-import React, { useState } from "react";
-import useSWR from "swr";
-import { Category } from "../../utils/Interface";
-import { fetcher } from "../../utils/loadQuestions";
+} from '@chakra-ui/react';
+import React, { useState } from 'react';
+import useSWR from 'swr';
+import { Category } from '../../utils/Interface';
+import { fetcher } from '../../utils/loadQuestions';
 
-import QuizCard from "../QuizCard/QuizCard";
+import QuizCard from '../QuizCard/QuizCard';
 
 const CategoryMenu = () => {
-  const [selectTopic, setTopic] = useState("Select Category");
-  const buttonTextColor = useColorModeValue("Flax.900", "Flax.900");
-  const buttonBgColor = "Flax.200";
+  const [selectTopic, setTopic] = useState('Select Category');
+  const buttonTextColor = useColorModeValue('Flax.900', 'Flax.900');
+  const buttonBgColor = 'Flax.200';
 
-  const { data, error } = useSWR("/api/category", fetcher);
+  const { data, error } = useSWR('/api/category', fetcher);
 
   if (error) return <p>Failed to load</p>;
   if (!data) return <p>Loading...</p>;
@@ -30,7 +30,7 @@ const CategoryMenu = () => {
   return (
     <>
       <Center>
-        <HStack py={6} maxW={"container.md"}>
+        <HStack py={6} maxW={'container.md'}>
           <Menu>
             <MenuButton
               as={Button}
@@ -38,8 +38,7 @@ const CategoryMenu = () => {
               bg={buttonBgColor}
               color={buttonTextColor}
               _hover={{ bg: buttonBgColor }}
-              _active={{ bg: buttonBgColor }}
-            >
+              _active={{ bg: buttonBgColor }}>
               {selectTopic}
             </MenuButton>
             <MenuList bg={buttonBgColor} color={buttonTextColor}>
@@ -48,8 +47,7 @@ const CategoryMenu = () => {
                   key={category.id}
                   value={category.name}
                   onClick={() => setTopic(category.name)}
-                  _hover={{ bg: "Raisin.400" }}
-                >
+                  _hover={{ bg: 'Raisin.400' }}>
                   {category.name}
                 </MenuItem>
               ))}
@@ -61,16 +59,15 @@ const CategoryMenu = () => {
           <Button
             bg={buttonBgColor}
             color={buttonTextColor}
-            onClick={() => setTopic("Select Category")}
+            onClick={() => setTopic('Select Category')}
             _hover={{ bg: buttonBgColor }}
-            _active={{ bg: buttonBgColor }}
-          >
+            _active={{ bg: buttonBgColor }}>
             Clear Category
           </Button>
         </HStack>
       </Center>
 
-      {selectTopic !== "Select Category" && (
+      {selectTopic !== 'Select Category' && (
         <QuizCard props={selectTopic.toLowerCase()} />
       )}
     </>

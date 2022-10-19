@@ -4,22 +4,22 @@ import {
   Heading,
   useColorMode,
   useColorModeValue,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 
-import React from "react";
-import ToggleTheme from "../ToggleTheme/ToggleTheme";
+import React from 'react';
+import ToggleTheme from '../ToggleTheme/ToggleTheme';
 
 const Navbar = () => {
-  const textColor = useColorModeValue("Flax.900", "Flax.200");
+  const textColor = useColorModeValue('Flax.900', 'Flax.200');
 
   return (
-    <Flex as={"nav"} p={3}>
-      <Container maxW={"full"}>
-        <Heading as={"h2"} color={textColor}>
+    <Flex as={'nav'} p={3}>
+      <Container maxW={'full'}>
+        <Heading as={'h2'} color={textColor}>
           Sinhala Quiz
         </Heading>
       </Container>
-      <Container maxW={"full"} centerContent alignItems={"end"}>
+      <Container maxW={'full'} centerContent alignItems={'end'}>
         <ToggleTheme />
       </Container>
     </Flex>

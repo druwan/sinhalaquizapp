@@ -7,6 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "format": "npx prettier --write .",
     "lint": "next lint"
   },
   "author": "Christopher Vestman",
@@ -28,6 +29,8 @@
     "@types/react": "^18.0.14",
     "eslint": "8.25.0",
     "eslint-config-next": "12.3.1",
+    "eslint-config-prettier": "^8.5.0",
+    "prettier": "2.7.1",
     "typescript": "^4.7.4"
   }
 }

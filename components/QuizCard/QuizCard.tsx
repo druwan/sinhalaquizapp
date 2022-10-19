@@ -1,9 +1,9 @@
-import { Box, Button, ButtonGroup, Flex, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
-import useSWR from "swr";
-import { fetcher } from "../../utils/loadQuestions";
-import { getRandom } from "../../utils/shuffleArray";
-import TrackProgress from "../Progress/TrackProgress";
+import { Box, Button, ButtonGroup, Flex, Text } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import useSWR from 'swr';
+import { fetcher } from '../../utils/loadQuestions';
+import { getRandom } from '../../utils/shuffleArray';
+import TrackProgress from '../Progress/TrackProgress';
 
 const QuizCard = ({ props }) => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -31,23 +31,22 @@ const QuizCard = ({ props }) => {
 
   return (
     <>
-      <Flex alignContent={"center"} justifyContent={"center"}>
+      <Flex alignContent={'center'} justifyContent={'center'}>
         <Box
-          minW={"350px"}
-          maxW={"550px"}
-          w={"full"}
-          bg={"Flax.200"}
-          boxShadow={"2xl"}
-          rounded={"md"}
+          minW={'350px'}
+          maxW={'550px'}
+          w={'full'}
+          bg={'Flax.200'}
+          boxShadow={'2xl'}
+          rounded={'md'}
           p={6}
-          overflow={"hidden"}
-          maxH={"400px"}
-          color="Raisin.900"
-        >
+          overflow={'hidden'}
+          maxH={'400px'}
+          color="Raisin.900">
           {currentQuestion < 5 ? (
             <>
-              <Text fontSize={"2xl"} textAlign={"center"}>
-                What is Sinhala for: {fiveQuestions[currentQuestion].english}{" "}
+              <Text fontSize={'2xl'} textAlign={'center'}>
+                What is Sinhala for: {fiveQuestions[currentQuestion].english}{' '}
                 {fiveQuestions[currentQuestion].sinhala.script}
               </Text>
               <Text>
@@ -56,7 +55,7 @@ const QuizCard = ({ props }) => {
             </>
           ) : (
             <>
-              <Text fontSize={"2xl"} textAlign={"center"}>
+              <Text fontSize={'2xl'} textAlign={'center'}>
                 Game has ended. Score: {currentScore} / {fiveQuestions.length}
               </Text>
               <Text>Start a new game by selecting a category.</Text>
@@ -64,18 +63,17 @@ const QuizCard = ({ props }) => {
           )}
         </Box>
       </Flex>
-      <Flex alignContent={"center"} justifyContent={"center"} gap={3} py={3}>
-        <Flex justifyContent={"space-around"} gap={3}>
+      <Flex alignContent={'center'} justifyContent={'center'} gap={3} py={3}>
+        <Flex justifyContent={'space-around'} gap={3}>
           <ButtonGroup>
             {fiveQuestions.map((alternative) => (
               <Button
                 key={alternative.id}
-                size={"lg"}
-                bg={"Flax.200"}
-                color={"Raisin.900"}
-                onClick={(e) => checkAnswer(e)}
-              >
-                <Text fontSize={"xl"}>{alternative.sinhala.alphabetical}</Text>
+                size={'lg'}
+                bg={'Flax.200'}
+                color={'Raisin.900'}
+                onClick={(e) => checkAnswer(e)}>
+                <Text fontSize={'xl'}>{alternative.sinhala.alphabetical}</Text>
               </Button>
             ))}
           </ButtonGroup>

@@ -1,8 +1,8 @@
-import { Box, Flex } from "@chakra-ui/react";
-import Head from "next/head";
+import { Box, Flex } from '@chakra-ui/react';
+import Head from 'next/head';
 
-import CategoryMenu from "../components/CategoryMenu/CategoryMenu";
-import Navbar from "../components/Navbar/Navbar";
+import CategoryMenu from '../components/CategoryMenu/CategoryMenu';
+import Navbar from '../components/Navbar/Navbar';
 
 const HomePage = () => {
   return (
@@ -21,12 +21,11 @@ const HomePage = () => {
         {/* Navbar */}
         <Navbar />
         <Flex
-          as={"main"}
-          flexDir={"column"}
-          alignItems={"center"}
-          minH={"75vh"}
-          justifyContent={"center"}
-        >
+          as={'main'}
+          flexDir={'column'}
+          alignItems={'center'}
+          minH={'75vh'}
+          justifyContent={'center'}>
           <CategoryMenu />
         </Flex>
       </Box>
